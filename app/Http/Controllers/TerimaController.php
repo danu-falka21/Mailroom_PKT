@@ -71,7 +71,7 @@ class TerimaController extends Controller
                 'kota_guest' => $request->kota_guest,
                 'tipe_barang' => $request->tipe_barang,
             ];
-
+//test
         } 
         else{
             $terima_data = [
