@@ -59,40 +59,38 @@
                 @foreach($kirim as $result => $hasil)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    @if ($hasil->terima_mailroom == null)
-                          <td><span class="badge badge-danger">No Mailroom</span></td>
-                          @else 
-                            <td><span class="badge badge-success">{{$hasil->terima_mailroom->format('d-m-Y H:i')}}</></span></td>
-                          @endif
-                          @if ($hasil->no_resi == null)
-                          <td><span class="badge badge-danger">Resi Kosong</span></td>
-                          @else 
-                            <td><span class="badge badge-success">{{$hasil->no_resi}}</></span></td>
-                          @endif
-                          @if ($hasil->id_kurir == null)
-                          <td><span class="badge badge-danger">Kurir Kosong</span></td>
-                          @else 
-                            <td><span class="badge badge-success">{{$hasil->Kurir->nama}}</></span></td>
-                          @endif
-                           
-                    <td>{{$hasil->User1->name}} <br> {{$hasil->User1->alamat}}, {{$hasil->User1->kota}}<br>{{$hasil->User1->email}} </td>
-                    <td>{{$hasil->nama_guest}}<br> {{$hasil->alamat_guest}}, {{$hasil->kota_guest}} </td>
-                    <td>{{$hasil->tipe_barang}} </td>
-                    @if ($hasil->id_user3 == null)
-                    <td><a type="button" class="btn btn-danger" href="{{route('kirim.updateview', $hasil->id)}}">Belum Diambil</a></td>
-                    @else  
-                      <td><span class="badge badge-success">{{$hasil->User3->name}}</span>,<br>{{$hasil->User3->npk}}, {{$hasil->User3->UnitKerja->nama}}<br>{{$hasil->terima_user->format('d-m-Y')}}</td>
-                    @endif
-                    <td>
-                    <form action="{{route('kirim.destroy', $hasil->id)}}" method="POST">
-                          @csrf 
-                          @method('delete')
-                        <a type="button" class="btn btn-warning" href="{{route('kirim.edit', $hasil->id)}}"><i class="fas fa-edit"></i></a>
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('data akan dihapus...')" ><i class="far fa-trash-alt"></i></button>
-                        </form>
-                    </td>
-                   
-                  </tr>
+                      @if ($hasil->terima_mailroom == null)
+                        <td><span class="badge badge-danger">No Mailroom</span></td>
+                      @else 
+                        <td><span class="badge badge-success">{{$hasil->terima_mailroom->format('d-m-Y H:i')}}</></span></td>
+                      @endif
+                      @if ($hasil->no_resi == null)
+                        <td><span class="badge badge-danger">Resi Kosong</span></td>
+                      @else 
+                        <td><span class="badge badge-success">{{$hasil->no_resi}}</></span></td>
+                      @endif
+                      @if ($hasil->id_kurir == null)
+                        <td><span class="badge badge-danger">Kurir Kosong</span></td>
+                      @else 
+                        <td><span class="badge badge-success">{{$hasil->Kurir->nama}}</></span></td>
+                      @endif 
+                        <td>{{$hasil->User1->name}} <br> {{$hasil->User1->alamat}}, {{$hasil->User1->kota}}<br>{{$hasil->User1->email}} </td>
+                        <td>{{$hasil->nama_guest}}<br> {{$hasil->alamat_guest}}, {{$hasil->kota_guest}} </td>
+                        <td>{{$hasil->tipe_barang}} </td>
+                      @if ($hasil->id_user3 == null)
+                        <td><a type="button" class="btn btn-danger" href="{{route('kirim.updateview', $hasil->id)}}">Belum Diambil</a></td>
+                      @else  
+                        <td><span class="badge badge-success">{{$hasil->User3->name}}</span>,<br>{{$hasil->User3->npk}}, {{$hasil->User3->UnitKerja->nama}}<br>{{$hasil->terima_user->format('d-m-Y')}}</td>
+                      @endif
+                        <td>
+                        <form action="{{route('kirim.destroy', $hasil->id)}}" method="POST">
+                              @csrf 
+                              @method('delete')
+                            <a type="button" class="btn btn-warning" href="{{route('kirim.edit', $hasil->id)}}"><i class="fas fa-edit"></i></a>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('data akan dihapus...')" ><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
                   @endforeach
                   @elseif(auth()->user()->role == '2')
                     @foreach($kirim as $result => $hasil)
@@ -127,7 +125,7 @@
                     @endforeach
                     @elseif(auth()->user()->role == '3')
                     @foreach($kirim as $result => $hasil)
-                      @if ($hasil->Kurir->nama == auth()->user()->posisi )
+                      @if (!empty($hasil->id_kurir) && $hasil->kurir->nama == auth()->user()->posisi )
                         <tr>
                           <td>{{$loop->iteration}}</td>
                           @if ($hasil->terima_mailroom == null)

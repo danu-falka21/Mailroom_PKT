@@ -12,4 +12,8 @@ class Kurir extends Model
     protected $fillable = ['nama','alamat','kota','no_telepon','email'];
     protected $table = 'kurir';
     use HasFactory;
+    public function Transaksi()
+    {
+        return $this->hasMany(Transaksi::class,'id','id_kurir');
+    }
 }

@@ -111,7 +111,7 @@
                     @endforeach
                     @elseif(auth()->user()->role == '3')
                     @foreach($terima as $result => $hasil)
-                      @if ($hasil->Kurir->nama == auth()->user()->posisi )
+                      @if (!empty($hasil->id_kurir) && $hasil->kurir->nama == auth()->user()->posisi )
                         <tr>
                           <td>{{$loop->iteration}}</td>
                           @if ($hasil->terima_mailroom == null)

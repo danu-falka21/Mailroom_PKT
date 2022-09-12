@@ -20,7 +20,7 @@ class KirimController extends Controller
         $user = User::all();
         $kurir = Kurir::all();
         $kirim = Transaksi::where('status_transaksi',0)->get();
-        //dd($kirim);
+        //dd($kirim[2]->kurir->nama);
         return view('kirim.index', compact('kirim','user','kurir'));
     }
 
