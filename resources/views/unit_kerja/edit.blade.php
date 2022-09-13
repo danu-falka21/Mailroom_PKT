@@ -31,7 +31,7 @@
       @method('patch')
             <div class="card-body">
                 <div class="form-group">
-                    <label for="nama" class=" col-form-label">Nama Unit Kerja</label>
+                    <label for="nama" class=" col-form-label">Nama Departemen</label>
                 <div >
                     <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{$unit_kerja->nama}}">
                     @error('nama')<div class="invalid-feedback">{{$message}}</div> @enderror

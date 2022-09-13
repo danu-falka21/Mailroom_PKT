@@ -64,6 +64,13 @@
                 </div>
                 </div>
                 <div class="form-group">
+                    <label for="posisi" class=" col-form-label">Posisi</label>
+                <div >
+                    <input type="text" class="form-control @error('posisi') is-invalid @enderror" id="posisi" name="posisi" value="{{$user->posisi}}">
+                    @error('posisi')<div class="invalid-feedback">{{$message}}</div> @enderror
+                </div>
+                </div>
+                <div class="form-group">
                     <label for="alamat" class=" col-form-label">Alamat</label>
                 <div >
                     <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{$user->alamat}}">
@@ -80,7 +87,7 @@
                 <div class="form-group">
                     <label for="no_telepon" class=" col-form-label">No Telepon</label>
                 <div >
-                    <input type="number" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon" value="{{$user->no_telepon}}">
+                    <input type="tel" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon"  value="{{$user->no_telepon}}">
                     @error('no_telepon')<div class="invalid-feedback">{{$message}}</div> @enderror
                 </div>
                 </div>
@@ -105,6 +112,7 @@
                   <select class="form-control" id="role" name='role'>
                       <option value="" holder>Pilih Role</option>
                       <option value="2" @if( $result->role == 2) selected @endif>User</option>
+                      <option value="3" @if( $result->role == 3) selected @endif>Kurir - User</option>
                       <option value="1" @if( $result->role == 1) selected @endif>Admin</option>
                     </select>
                      

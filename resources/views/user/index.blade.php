@@ -69,10 +69,12 @@
                     <td> {{$hasil->no_telepon}} </td>
                     <td> 
                         @if($hasil->role == 2)
-                         <span class=" badge badge-success">User </span>
+                         <span class=" badge badge-primary">User </span>
                          
-                         @else
-                         <span class=" badge badge-warning">Admin </span>
+                         @elseif($hasil->role == 1)
+                         <span class=" badge badge-success">Admin </span>
+                         @elseif($hasil->role == 3)
+                         <span class=" badge badge-warning">Kurir </span>
                          @endif
                     </td>
                     <td >
@@ -169,7 +171,7 @@
                 <div class="form-group">
                     <label for="no_telepon" class=" col-form-label">No Telepon</label>
                 <div >
-                    <input type="number" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon" placeholder="Tulis disini....">
+                    <input type="tel" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Tulis disini....">
                     @error('no_telepon')<div class="invalid-feedback">{{$message}}</div> @enderror
                 </div>
                 </div>

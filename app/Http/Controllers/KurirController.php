@@ -86,11 +86,11 @@ class KurirController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required|min:3',
-            'alamat' => 'required|min:3',
-            'kota' => 'required|min:3',
-            'no_telepon' => 'required|integer',
-            'email' => 'required|min:3|email',
+            'nama' => 'min:3',
+            'alamat' => 'min:3',
+            'kota' => 'min:3',
+            'no_telepon' => 'max:13|regex:/(01)[0-9]{9}/',
+            'email' => 'min:3|email',
         ]);
         $Kurir_data = [
             'nama'=> $request->nama,

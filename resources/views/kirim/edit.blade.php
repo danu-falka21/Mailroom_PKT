@@ -71,7 +71,7 @@
                 </div>
                 </div>
                 <div class="form-group">
-                    <label for="tipe_barang" class=" col-form-label">Tipe Bareng</label>
+                    <label for="tipe_barang" class=" col-form-label">Tipe Barang</label>
                 <div >
                   <select class="form-control" id="tipe_barang" name='tipe_barang'>
                     <option value="" holder>Pilih Bareng</option>

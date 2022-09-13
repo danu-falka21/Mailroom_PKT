@@ -19,7 +19,7 @@ class TerimaController extends Controller
     {
         $user = User::all();
         $kurir = Kurir::all();
-        $terima = Transaksi::where('status_transaksi',1)->get();
+        $terima = Transaksi::where('status_transaksi',1)->latest()->get();
         //dd($terima);
         return view('terima.index', compact('terima','user','kurir'));
     }

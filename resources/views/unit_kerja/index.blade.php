@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('sub-judul','Unit Kerja')
+@section('sub-judul','Departemen')
 @section('content')
  
  
@@ -13,7 +13,7 @@
       <!-- Default box -->
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Tabel Unit Kerja</h3>
+          <h3 class="card-title">Tabel Departemen</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -39,7 +39,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Unit Kerja</th>
+                    <th>Departemen</th>
                     <th>Kompartemen</th>
                     <th>Action</th>
                 </tr>
@@ -88,7 +88,7 @@
       @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="nama" class=" col-form-label">Nama Unit Kerja</label>
+                    <label for="nama" class=" col-form-label">Nama Departemen</label>
                 <div >
                     <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Tulis disini....">
                     @error('nama')<div class="invalid-feedback">{{$message}}</div> @enderror

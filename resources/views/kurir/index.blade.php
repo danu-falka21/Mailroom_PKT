@@ -116,7 +116,7 @@
                 <div class="form-group">
                     <label for="no_telepon" class=" col-form-label">No. Telepon</label>
                 <div >
-                    <input type="number" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon" placeholder="Tulis disini....">
+                    <input type="tel" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Tulis disini....">
                     @error('no_telepon')<div class="invalid-feedback">{{$message}}</div> @enderror
                 </div>
                 </div>

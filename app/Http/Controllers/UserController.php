@@ -42,13 +42,13 @@ class UserController extends Controller
     {
         $this->validate($request,[
             'name' => 'required|min:3|max:99',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'rfid' => 'required',
             'npk' => 'required',
             'posisi' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
-            'no_telepon' => 'required|integer',
+            'no_telepon' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'id_unit_kerja' => 'required',
             'role' => 'required',
             'password' => 'required|min:6',
@@ -105,7 +105,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'min:3|max:99',
+            'email' => 'email',
+            'no_telepon' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            
+        ]);
+        $user_data = [
+            'name'=> $request->name,
+            'email'=> $request->email,
+            'rfid' => $request->rfid,
+            'npk' => $request->npk,
+            'posisi' => $request->posisi,
+            'alamat' => $request->alamat,
+            'kota' => $request->kota,
+            'no_telepon' => $request->no_telepon,
+            'id_unit_kerja' => $request->id_unit_kerja,
+            'role'=> $request->role,
+            'password'=>bcrypt($request->password),
+        ];
+
+        User::whereid($id)->update($user_data);
+
+        return redirect()->route('user.index')->with('status','Unit Kerja Berhasil di Update');
     }
 
     /**
